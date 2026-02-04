@@ -71,7 +71,6 @@ function CabinRow({ cabin }) {
         <Discount>{formatCurrency(discount)}</Discount>
         <div>
           <button
-            // disabled={isDeleting}
             onClick={() => {
               setShowEditForm((showForm) => !showForm);
             }}
@@ -87,15 +86,6 @@ function CabinRow({ cabin }) {
             Delete
           </button>
         </div>
-
-        <button
-          disabled={isDeleting}
-          onClick={() => {
-            mutate(id);
-          }}
-        >
-          Delete
-        </button>
       </TableRow>
       {showEditForm && <CreateCabinForm cabitToEdit={cabin} />}
     </>
