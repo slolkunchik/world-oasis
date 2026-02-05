@@ -7,7 +7,7 @@ function AddCabin() {
     <div>
       <Modal>
         <Modal.Open opens="cabin-form">
-          <Button variation="primary" size="medium">
+          <Button $variation="primary" $size="medium">
             Add new cabin
           </Button>
         </Modal.Open>
