@@ -19,10 +19,14 @@ export function useBookings() {
   const [field, direction] = sortByRaw.split("-");
   const sortBy = { field, direction };
 
-  const { isPending, data: bookings } = useQuery({
-    queryKey: ["bookings", filter, sortBy],
-    queryFn: () => getBookings({ filter, sortBy }),
+  // PAGINATION
+  const pageRaw = searchParams.get("page");
+  const page = !pageRaw ? 1 : Number(pageRaw);
+
+  const { isPending, data: { data: bookings, count } = {} } = useQuery({
+    queryKey: ["bookings", filter, sortBy, page],
+    queryFn: () => getBookings({ filter, sortBy, page }),
   });
 
-  return { isPending, bookings };
+  return { isPending, bookings, count };
 }
