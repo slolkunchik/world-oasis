@@ -9,9 +9,12 @@ import ButtonGroup from "../../ui/ButtonGroup";
 import Button from "../../ui/Button";
 import ButtonText from "../../ui/ButtonText";
 import Spinner from "../../ui/Spinner";
+import ConfirmDelete from "../../ui/ConfirmDelete";
+import Modal from "../../ui/Modal";
 
 import { useMoveBack } from "../../hooks/useMoveBack";
 import { useBooking } from "./useBooking";
+import { useDeleteBooking } from "./useDeleteBooking";
 import { useCheckout } from "../check-in-out/useCheckout";
 
 const HeadingGroup = styled.div`
@@ -23,6 +26,7 @@ const HeadingGroup = styled.div`
 function BookingDetail() {
   const { booking = {}, isPending } = useBooking();
   const { checkout, isCheckingOut } = useCheckout();
+  const { isDeleting, deleteBooking } = useDeleteBooking();
   const moveBack = useMoveBack();
   const navigate = useNavigate();
 
@@ -38,7 +42,7 @@ function BookingDetail() {
   };
 
   return (
-    <>
+    <Modal>
       <Row type="horizontal">
         <HeadingGroup>
           <Heading as="h1">Booking #{bookingId}</Heading>
@@ -67,11 +71,25 @@ function BookingDetail() {
             Check out
           </Button>
         )}
+        <Modal.Open opens="delete">
+          <Button $variation="danger" $size="medium">
+            Delete Booking
+          </Button>
+        </Modal.Open>
         <Button $variation="secondary" $size="medium" onClick={moveBack}>
           Back
         </Button>
       </ButtonGroup>
-    </>
+      <Modal.Window name="delete">
+        <ConfirmDelete
+          resourceName="booking"
+          onConfirm={() => {
+            deleteBooking(bookingId, { onSettled: () => navigate(-1) });
+          }}
+          disabled={isDeleting}
+        ></ConfirmDelete>
+      </Modal.Window>
+    </Modal>
   );
 }
 
