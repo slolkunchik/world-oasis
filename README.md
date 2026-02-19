@@ -4,6 +4,13 @@
 
 The Wild Oasis Project is a modern web application built using React that demonstrates the use of various advanced technologies and best practices in web development.
 
+The Wild Oasis is a small boutique hotel with 8 luxurious small wooden cabins. This app is build to manage everything about the hotel: cabins, bookings and guests. This is an internal application used to check in guests as they arrive.
+Users of the app are hotel employees. New users can only be signed in inside the app.
+
+If you want to check the implemented functionality feel free to use predefault credentials for the first test login.
+
+This project is the app for hotel personal to manage bookings, guests and cabins. Only
+
 ## Technologies Used
 
 1. **React**: The core library for building the user interface, allowing for the creation of reusable components.
