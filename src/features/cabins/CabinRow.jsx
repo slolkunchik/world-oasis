@@ -42,7 +42,7 @@ function CabinRow({ cabin }) {
   const { name, maxCapacity, regularPrice, discount, description, image, id } =
     cabin;
 
-  const { createCabin } = useCreateCabin();
+  const { isCreating, createCabin } = useCreateCabin();
 
   function handleDuplicate() {
     createCabin({
@@ -71,7 +71,11 @@ function CabinRow({ cabin }) {
           <Menus.Menu>
             <Menus.Toggle id={id} />
             <Menus.List id={id}>
-              <Menus.Button onClick={handleDuplicate} icon={<HiSquare2Stack />}>
+              <Menus.Button
+                onClick={handleDuplicate}
+                icon={<HiSquare2Stack />}
+                disabled={isCreating}
+              >
                 Duplicate
               </Menus.Button>
 
