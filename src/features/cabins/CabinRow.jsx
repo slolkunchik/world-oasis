@@ -42,7 +42,7 @@ function CabinRow({ cabin }) {
   const { name, maxCapacity, regularPrice, discount, description, image, id } =
     cabin;
 
-  const { isCreating, createCabin } = useCreateCabin();
+  const { createCabin } = useCreateCabin();
 
   function handleDuplicate() {
     createCabin({
