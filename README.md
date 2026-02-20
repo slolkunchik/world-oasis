@@ -9,6 +9,8 @@ Users of the app are hotel employees. New users can only be signed in inside the
 
 If you want to check the implemented functionality feel free to use predefault credentials for the first test login.
 
+[The link to the deployed project](https://world-oasis-admin.vercel.app/)
+
 ## Technologies Used
 
 1. **React**: The core library for building the user interface, allowing for the creation of reusable components.
